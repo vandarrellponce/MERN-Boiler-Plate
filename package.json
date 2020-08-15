@@ -3,17 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engine":{
+    "node":"12.6.1",
+    "npm":"6.13.4"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./server/index.js",
-    "dev": "nodemon ./server/index.js"
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.28",
     "nodemon": "^2.0.4",
     "validator": "^13.1.1"
