@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const userRouter = require('./routes/userRoute')
 const key = require('./config/key')
-
+const cors = require('cors')
 
 // Database Connection
 mongoose.connect(key.mongoURI, {
@@ -24,9 +24,12 @@ app.use(cookieParser())
 
 // App Routes
 app.use(userRouter)
+app.get('/api/test', (req, res) => {
+    res.send('Test message from the server')
+})
 
 // Port config and server launching
-const port = process.env.PORT || 6000
+const port = process.env.PORT || 5001
 app.listen(port, () => {
     console.log('Server running on localhost port ' + port)
 })

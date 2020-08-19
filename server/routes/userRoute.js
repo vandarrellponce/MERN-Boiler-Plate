@@ -23,17 +23,19 @@ router.post('/api/users/login', async(req, res) => {
     try {
         // Find Email
         const user = await User.findOne({email: req.body.email})
-        if(!user) throw new Error('Incorrect email')
+        if(!user) throw new Error('Incorrect Email')
+
         // Compare Password
         const isMatch = await bcrypt.compare(req.body.password, user.password)
-        if(!isMatch) throw new Error('Incorrect password')
+        if(!isMatch) throw new Error('Incorrect Password')
+        
         // Generate Token
         const token = user.generateToken()
         await user.save()
 
         res
         .cookie('x_token', token)
-        .send({isAuth: true, user, token})
+        .send({success: true, user, token})
        /*  res.send({success: true, user, token}) */
     }
     catch (e) {
